@@ -25,7 +25,7 @@ generate a webpage that displays my team's basic info SO THAT I have quick acces
 When you run node index.js, the application uses the inquirer package to prompt you in the command line with a series of questions about your tesm memberd. Finally,  createHtml() is used to generate your team in html
 
 
-![sample] (https://github.com/mayqa001/team-profile/blob/main/sample/sample.gif)
+![sample](https://github.com/mayqa001/team-profile/blob/main/sample/sample.gif)
 
     
 ## Contrubution
