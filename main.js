@@ -5,9 +5,13 @@ const inquirer = require("inquirer");
 const fs = require("fs");
 
 const questions = require("./questions");
+const createHtml = require("./pageGenerate");
+
+
+
 
 let name, id, email, officeNumber, username, school;
-let team = [];
+var team = [];
 
 function createEmployee() {
   let temp = inquirer.prompt(questions.baseQuestions).then((ans) => {
@@ -56,11 +60,9 @@ async function createRole(position) {
   }
 }
 
-function confirmAdd() {
-  var temp = inquirer.prompt(questions.confirm).then((ans) => {
-    return ans;
-  });
-  return temp;
+async function confirmAdd() {
+  let temp = await inquirer.prompt(questions.confirm);
+  return temp.input;
 }
 
 async function main() {
@@ -69,9 +71,10 @@ async function main() {
     const position = await createEmployee();
     await createRole(position);
     loop = await confirmAdd();
-    console.log(loop);
     console.log("================================");
   }
+  createHtml.createHtml(team);
 }
 
 main();
+
