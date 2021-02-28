@@ -1,4 +1,8 @@
 var fs = require("fs");
+var Manager = require("./manager");
+var Intern = require("./intern");
+var Engineer = require("./engineer");
+
 let page = `
 <!DOCTYPE html>
 <html lang="en">
@@ -27,7 +31,7 @@ function createCard(team) {
       cards += `</div>`;
       cards += ` <div class="row" style = "margin-top: 50px;">`;
     }
-    if (team[i].officeNumber !== "") {
+    if (team[i] instanceof Manager) {
       cards += `
       <div class ="col">
       <div class="card" style="width: 18rem;">
@@ -44,7 +48,7 @@ function createCard(team) {
       </div>
             
             `;
-    } else if (team[i].github !== "") {
+    } else if (team[i] instanceof Engineer) {
       cards += `
       <div class ="col">
       <div class="card" style="width: 18rem;">
@@ -61,7 +65,7 @@ function createCard(team) {
       </div>
             
         `;
-    } else {
+    } else if(team[i] instanceof Intern){
       cards += `
       <div class="col">
       <div class="card" style="width: 18rem;">
